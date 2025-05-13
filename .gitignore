@@ -1,2 +1,7 @@
-.vscode
+.vscode/*
 *.exe
+*.o
+*.a
+*.so
+*.out
+test
