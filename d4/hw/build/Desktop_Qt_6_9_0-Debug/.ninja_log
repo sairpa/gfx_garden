@@ -1,0 +1,9 @@
+# ninja log v6
+2	300	1747233805092975468	hw_autogen/timestamp	c69e13e79f9d4f92
+2	300	1747233805092975468	hw_autogen/mocs_compilation.cpp	c69e13e79f9d4f92
+2	300	1747233805092975468	/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/hw_autogen/timestamp	c69e13e79f9d4f92
+2	300	1747233805092975468	/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/hw_autogen/mocs_compilation.cpp	c69e13e79f9d4f92
+301	2078	1747233805098257432	CMakeFiles/hw.dir/hw_autogen/mocs_compilation.cpp.o	95d5f345b4944b08
+301	2126	1747233805099005866	CMakeFiles/hw.dir/main.cpp.o	8e1ef8a23e0bd709
+301	2572	1747233805099164793	CMakeFiles/hw.dir/mainwindow.cpp.o	6a65595cab182830
+2572	2947	1747233807368956642	hw	c6486871c8791d7d
