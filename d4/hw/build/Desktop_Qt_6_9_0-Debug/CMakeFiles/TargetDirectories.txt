@@ -1,9 +1,0 @@
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/hw.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/edit_cache.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/rebuild_cache.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/list_install_components.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/install.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/install/local.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/install/strip.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/hw_autogen_timestamp_deps.dir
-/home/tintu/dev/wss/d4/hw/build/Desktop_Qt_6_9_0-Debug/CMakeFiles/hw_autogen.dir
