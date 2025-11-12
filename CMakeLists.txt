@@ -11,4 +11,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
 
+# Find the required packages
+find_package(OpenGL REQUIRED)
+# Note: You might need 'glfw' or 'glfw3' depending on how it's installed
+find_package(glfw3 REQUIRED) 
+
 add_executable(gs g0/g01.cpp)
+
+target_link_libraries(gs PRIVATE 
+    ${OPENGL_LIBRARIES} 
+    glfw
+)
