@@ -48,3 +48,8 @@ Reference: [Learn OpenGL](https://learnopengl.com/)
   `#include <GLFW\glfw3.h>`
 - **GLAD** is the library used for function definition lookups for the operating system to load stuff for apps using different or same versions of OpenGL
 - [GLAD](https://github.com/Dav1dde/glad) is super conventional on it being a web service api instead of a core lib and we query through a web interface, setting lang to c++, then the OpenGL version and then the profile being Core and finally *"Generating the loader"*
+
+- Its better to download from [source](https://www.glfw.org/download.html) and build, make and sudo make install em and make it easier for building the app
+
+- this was the build command with all of the linking libs added:
+`g++ g01.cpp -o css -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl`
