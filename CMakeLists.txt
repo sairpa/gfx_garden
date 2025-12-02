@@ -16,7 +16,7 @@ find_package(OpenGL REQUIRED)
 # Note: You might need 'glfw' or 'glfw3' depending on how it's installed
 find_package(glfw3 REQUIRED) 
 
-# add_executable(gs g0/g01.cpp)
+add_executable(gs g0/g01.cpp)
 
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 
@@ -36,6 +36,9 @@ if(UNIX AND NOT APPLE)
   # use pkg-config --libs $(pkg-config --print-requires --print-requires-private glfw3) in a terminal to confirm
   set(LIBS ${GLFW3_LIBRARY} X11 Xrandr Xinerama Xi Xxf86vm Xcursor GL dl pthread freetype ${ASSIMP_LIBRARY})
   set (CMAKE_CXX_LINK_EXECUTABLE "${CMAKE_CXX_LINK_EXECUTABLE} -ldl")
+
+add_library(GLAD "src/glad.c")
+set(LIBS ${LIBS} GLAD)
 
 target_link_libraries(gs PRIVATE 
     ${OPENGL_LIBRARIES} 
