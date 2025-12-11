@@ -1,10 +1,24 @@
 // A program to try to spawn a window and draw triangles using opengl :D
 #include<window.h>
 
+// For triangles
+// float vertices[] = {
+//     -0.5f,  -0.5f,  0.0f,
+//     0.5f,   -0.5f,  0.0f,
+//     0.0f,   0.5f,   0.0f
+// };
+
+// For rectagnles
 float vertices[] = {
-    -0.5f,  -0.5f,  0.0f,
-    0.5f,   -0.5f,  0.0f,
-    0.0f,   0.5f,   0.0f
+         0.5f,  0.5f, 0.0f,  // top right
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+        -0.5f,  0.5f, 0.0f   // top left 
+    };
+    
+unsigned int indices[] = {  // note that we start from 0!
+    0, 1, 3,  // first Triangle
+    1, 2, 3   // second Triangle
 };
 
 const char *vertexShaderSource = "#version 330 core\n"
@@ -56,12 +70,20 @@ int main(){
     unsigned int VAO;
     glGenVertexArrays(1, &VAO); 
 
+    // Elemental Buffer init
+    unsigned int EBO;
+    glGenBuffers(1, &EBO);
+
     // binding vao stuff
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
+    glEnableVertexAttribArray(0);
 
+    // init for Elemental buffer
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Vertex Shader
     unsigned int vertexShader;
@@ -114,7 +136,8 @@ int main(){
     std::cout<< "Shader program linking failed :(\n";
     }
 
-    
+    glBindBuffer(GL_ARRAY_BUFFER, 0); 
+    glBindVertexArray(0); 
 
     while(!glfwWindowShouldClose(window)){
         // Input handling- currently only focussing on the exit :|
@@ -124,16 +147,24 @@ int main(){
         glClearColor(0.13f, 0.5f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
+        // Drawing the triangle
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES,0,3);
+        // glDrawArrays(GL_TRIANGLES,0,3);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
+        // Swap buffers and poll io every frame update
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
+
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+    glDeleteProgram(shaderProgram);
     glfwTerminate();
     return 0;
 }
