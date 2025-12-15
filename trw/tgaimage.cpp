@@ -203,5 +203,25 @@ int TGAImage::height() const {
 }
 
 
-// Obj reader
+objParser::objParser(std::string p){
+    path = p;
+    std::cout<< path;
+}
 
+void objParser::processObj(){
+    std::cout<< path;
+    objFile.open(path);
+
+    if(!objFile.is_open()){
+        std::cerr << "File not open!\n";
+        exit(0);
+    }
+
+    while(getline(objFile,s)){
+        l += "\n" + s;
+    }
+    if(objFile.eof())
+        std::cout<< "File content: \n" << l << " \n end of file \n";   
+    
+    objFile.close();
+}

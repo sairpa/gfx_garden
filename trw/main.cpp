@@ -1,5 +1,4 @@
 #include "tgaimage.h"
-#include <cstdlib>
 constexpr TGAColor white = {255, 255, 255, 255}; // BGRA order!!!
 constexpr TGAColor green = {0, 255, 0, 255};
 constexpr TGAColor red = {0, 0, 255, 255};
@@ -66,36 +65,29 @@ int main(int argc, char** argv){
     constexpr int height = 720;
     TGAImage framebuffer(width, height, TGAImage::RGB);
 
-    if(argc <2){
-        int ax = 7*11.25, ay = 3*11.25;
-        int bx = 12*11.25, by = 37*11.25;
-        int cx = 62*11.25, cy = 53*11.25;
+    // if(argc <2){
+    //     int ax = 7*11.25, ay = 3*11.25;
+    //     int bx = 12*11.25, by = 37*11.25;
+    //     int cx = 62*11.25, cy = 53*11.25;
 
-        line(ax, ay, bx, by, framebuffer, blue);
-        line(bx, by, cx, cy, framebuffer, green);
-        line(cx, cy, ax, ay, framebuffer, yellow);
-        line(ax, ay, cx, cy, framebuffer, red);
+    //     line(ax, ay, bx, by, framebuffer, blue);
+    //     line(bx, by, cx, cy, framebuffer, green);
+    //     line(cx, cy, ax, ay, framebuffer, yellow);
+    //     line(ax, ay, cx, cy, framebuffer, red);
 
-        framebuffer.set(ax,ay,white);
-        framebuffer.set(bx,by,white);
-        framebuffer.set(cx,cy,white);
-    }else{
+    //     framebuffer.set(ax,ay,white);
+    //     framebuffer.set(bx,by,white);
+    //     framebuffer.set(cx,cy,white);
+    // }else{
         // std::srand(std::time({}));
         // for (int i=0; i<(1<<24); i++) {
         //     int ax = rand()%width, ay = rand()%height;
         //     int bx = rand()%width, by = rand()%height;
         //     line(ax, ay, bx, by, framebuffer, { rand()%255, rand()%255, rand()%255, rand()%255 });
         // }
-        std::ifstream objFile("/home/tintu/dev/gfx_garden/trw/diablo3_pose.obj");
-        std::string s,l;
-        while(getline(objFile,s)){
-            l += "\n" + s;
-        }
-        if(objFile.eof())
-            std::cout<< "File content: \n" << l << " \n end of file \n";   
-        
-        objFile.close();
-    }
+        objParser obj("/home/tintu/dev/gfx_garden/trw/diablo3_pose.obj");
+        obj.processObj();
+    // }
 
     
 

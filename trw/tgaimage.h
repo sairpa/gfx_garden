@@ -6,6 +6,8 @@
 #include <cstring>
 #include <ctime>
 #include<cmath>
+#include <cstdlib>
+#include<map>
 
 #pragma pack(push,1)
 struct TGAHeader {
@@ -49,5 +51,14 @@ private:
     int w = 0, h = 0;
     std::uint8_t bpp = 0;
     std::vector<std::uint8_t> data = {};
+};
+
+struct objParser{
+    objParser() = default;
+    objParser(std::string p);
+    std::string path,s,l;
+    std::map<int, std::string> objVals;
+    std::ifstream objFile;
+    void processObj();
 };
 
