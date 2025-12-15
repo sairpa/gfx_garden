@@ -2,6 +2,10 @@
 #include <cstdint>
 #include <fstream>
 #include <vector>
+#include <iostream>
+#include <cstring>
+#include <ctime>
+#include<cmath>
 
 #pragma pack(push,1)
 struct TGAHeader {
