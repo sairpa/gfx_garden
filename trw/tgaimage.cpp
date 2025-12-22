@@ -218,10 +218,12 @@ void objParser::processObj(){
     }
 
     while(getline(objFile,s)){
+        if(s[0] == 'v')
+            std::cout << "Elem: \t" << s << std::endl;
         l += "\n" + s;
     }
-    if(objFile.eof())
-        std::cout<< "File content: \n" << l << " \n end of file \n";   
+    // if(objFile.eof())
+    //     std::cout<< "File content: \n" << l << " \n end of file \n";   
     
     objFile.close();
 }
