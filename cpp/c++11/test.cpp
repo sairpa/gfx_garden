@@ -4,6 +4,19 @@ using namespace std;
 // My test code snippet collection to learn c11 standards
 // g++ -std=c++11 /home/tintu/dev/gfx_garden/cpp/c++11/test.cpp -o test; ./test
 
+
+// constexpr float inlinestuff(int x){
+//         return x*M_PI;
+//     };
+
+// float inlinestuff(int x){
+//     return x*M_PI;
+// };
+
+int fun1(float x){
+    return x*M_1_PI;
+}
+
 int main(){
 
     // Code for range based iterator
@@ -74,7 +87,37 @@ int main(){
     // constexpr
     // compile time evaluation and helps runtime performance
     // 
+    // constexpr int k(10);
+    // cout << inlinestuff(k) << endl;
+    // int k(10);
+    // cout << inlinestuff(k) << endl;
+
+    // NULL POINTER
+    // before it was a compiler dependent constant defintion
+    // now we have a universal defenition
+    // nullptr points to the earlier NULL keyword
+    // assigning 0 to pointers also does the same
+    // dereferencing null pointers still ambigious
+    // check for null a must
+    // int* emptr = NULL;
+    // int* emptr1 = nullptr;
+    // int* emptr2 = 0;
+
+    // cout << (emptr1 == emptr) << "\t"<< (emptr2 == emptr) << endl;
+
+    // Auto keyword
+    // decltype keyword // helps extract the datatype of the infered var/ function
+    // auto x = 14;
+    // auto y = &x;
+
+    // cout << typeid(x).name() << "\t" << typeid(y).name() << endl;
+
+    // auto k =13.5;
+    // decltype(fun1(k)) z;
+
+    // cout << typeid(z).name() << endl;
 
 
+    
     return 0;
 }
