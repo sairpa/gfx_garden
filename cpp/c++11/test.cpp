@@ -13,9 +13,21 @@ using namespace std;
 //     return x*M_PI;
 // };
 
-int fun1(float x){
-    return x*M_1_PI;
-}
+// int fun1(int p){
+//     if(p <0){
+//         return p+1000;
+//     }else{
+//         return p%100;
+//     }
+//    }
+
+//    int f(int i)[[expects:i > 0]]
+//         return i%100;
+//    }
+
+// int fun1(float x){
+//     return x*M_1_PI;
+// }
 
 int main(){
 
@@ -117,7 +129,30 @@ int main(){
 
     // cout << typeid(z).name() << endl;
 
+    // Uniform initialiation
+    // int i(10);
+    // int p{13};
+    // int k[]{1,2,3,4};
 
+    // cout << i << "\t" << p << "\t" << k[3] << endl;
+    // int* p= new int[9]{1,2,3,4,5,6,7,8,9};
+    // for(int i=0; i<9; i++){
+    //     cout << *(p+i) << "\t";
+    // }
     
+    /*
+        Attributes
+        Mordern comments to give devs some work to compiler
+        for optimising things a bit more stringently
+
+
+        Untill c17, there were lot of informal non-standard attributes
+        so we have some compiler dependent behaviour for most of the attributes
+    */
+   
+
+   
+
+
     return 0;
 }
