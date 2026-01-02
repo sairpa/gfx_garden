@@ -20,6 +20,7 @@ using namespace std;
 // }
 
 // int var = 100;
+set<string> identifiers; // f,g,s
 
 int main(int argc, char** argv){
 
@@ -45,8 +46,35 @@ int main(int argc, char** argv){
     // variant<int, string, double> v{"rpa"};
     // cout << get<string>(v) << endl;
 
-    string_view sv{"This is a string view in c++17"};
-    cout << sv << "\t" << sv.size() << endl;
+    // string_view sv{"This is a string view in c++17"};
+    // cout << sv << "\t" << sv.size() << endl;
+    
+    // identifiers involved: 
+    
+    ifstream objFile("/home/tintu/dev/gfx_garden/trw/diablo3_pose.obj");
+    if(objFile.is_open()){
+        cout << "File opened!\n";
+        string line;
+        while(getline(objFile, line)){
+            // actualplace to read the obj file line by line
+            string_view sv{line};
+            // extract only 1 or 2 chars from the string_view based on whitespace
+            string id;
+            // if cout << sv.at(0) << endl;
+            if(sv.at(1) == '#'){
+                id = string{sv.substr(0,1)};
+                identifiers.insert(string{id});
+            }
+        }
+        objFile.close();
+    }
+    else{
+        cout << "File didn't open :/\n";
+    }
 
+    cout << "Identifiers found in the obj file: \n";
+    for(const auto &id : identifiers){
+        cout << id << "\n";
+    }
     return 0;
 }
