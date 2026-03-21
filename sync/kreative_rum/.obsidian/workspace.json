@@ -1,0 +1,183 @@
+{
+  "main": {
+    "id": "823eed7622e03ab2",
+    "type": "split",
+    "children": [
+      {
+        "id": "24ae08e0cc1521a7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "30a2caa2f4c654b8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Meesa/GSDE Timeline 😊.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "GSDE Timeline 😊"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "27f5503a943e9138",
+    "type": "split",
+    "children": [
+      {
+        "id": "445f8532d21fed10",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3d178cced17b2860",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "55b79531ad2d110a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "88ef77343d6a8ce3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3944d2d781825728",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f445bb8f42907dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7471492da0aa965d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Meesa/GSDE Timeline 😊.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for GSDE Timeline 😊"
+            }
+          },
+          {
+            "id": "f26a58db2dbea60c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Meesa/GSDE Timeline 😊.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from GSDE Timeline 😊"
+            }
+          },
+          {
+            "id": "f82eae584d1481a7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "ae271c97bdba0902",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Meesa/GSDE Timeline 😊.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of GSDE Timeline 😊"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "audio-recorder:Start/stop recording": false,
+      "publish:Publish changes...": false,
+      "bases:Create new base": false,
+      "omnisearch:Omnisearch": false,
+      "obsidian-trash-explorer:Open trash explorer": false
+    }
+  },
+  "active": "3d178cced17b2860",
+  "lastOpenFiles": [
+    "Computers/C++/C++ 20.md",
+    "Meesa/GSDE Timeline 😊.md",
+    "Meesa/Current Focus.md",
+    "Meesa"
+  ]
+}

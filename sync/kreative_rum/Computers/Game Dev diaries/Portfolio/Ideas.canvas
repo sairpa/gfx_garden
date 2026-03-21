@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"5ca9964fe8e8c811","type":"file","file":"Computers/Game Dev diaries/Portfolio/Portfolio upgrade.md","x":3,"y":-169,"width":400,"height":400,"color":"2"},
+		{"id":"306eeb5be7b0ad11","type":"text","text":"Investigate the isometric perspective type of genre","x":602,"y":58,"width":250,"height":60},
+		{"id":"36f75816e8c32611","type":"text","text":"Figure out a way to make art for that perspective","x":685,"y":267,"width":250,"height":60},
+		{"id":"1945c9d4e5a1138a","type":"text","text":"Find out a runtime loop for the whole context","x":624,"y":487,"width":250,"height":60},
+		{"id":"90438ea16b3b2112","type":"text","text":"Add a loop to involve Bengaluru, Trichy, ettimadai, ","x":1164,"y":350,"width":195,"height":94,"color":"4"},
+		{"id":"90d6767c5b4c4ca1","type":"text","text":"Make it succinct and simple","x":1117,"y":544,"width":250,"height":60,"color":"4"},
+		{"id":"19af7821d1e57a84","type":"text","text":"Have a rich world for all the sub sections","x":1103,"y":709,"width":250,"height":60,"color":"4"},
+		{"id":"8241051e1b677f1a","x":1116,"y":856,"width":250,"height":60,"color":"4","type":"text","text":"Have lots of stuff to look and interact with"}
+	],
+	"edges":[
+		{"id":"273fc336e9717581","fromNode":"1945c9d4e5a1138a","fromSide":"right","toNode":"90438ea16b3b2112","toSide":"left"},
+		{"id":"e6271fc282ebb125","fromNode":"1945c9d4e5a1138a","fromSide":"right","toNode":"90d6767c5b4c4ca1","toSide":"left"},
+		{"id":"159866b506733b23","fromNode":"1945c9d4e5a1138a","fromSide":"right","toNode":"19af7821d1e57a84","toSide":"left"},
+		{"id":"268435b8d6317b06","fromNode":"5ca9964fe8e8c811","fromSide":"right","toNode":"306eeb5be7b0ad11","toSide":"left"},
+		{"id":"107bcf64bebedddb","fromNode":"5ca9964fe8e8c811","fromSide":"right","toNode":"36f75816e8c32611","toSide":"left"},
+		{"id":"380f12b8c9355b33","fromNode":"5ca9964fe8e8c811","fromSide":"right","toNode":"1945c9d4e5a1138a","toSide":"left"},
+		{"id":"30ed69fefa106ce5","fromNode":"1945c9d4e5a1138a","fromSide":"right","toNode":"8241051e1b677f1a","toSide":"left"}
+	]
+}
