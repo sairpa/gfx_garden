@@ -1,43 +1,58 @@
-# GPU Architecture & C++20 Roadmap
+# 🛠️ The Sandbox & Scavenge Roadmap: GPU Architecture
+
+**Objective:** Transition to GPU Architecture (Vertical 1) via self-directed research and strict C++20 execution.
+**Protocol:** Scavenge the theory on mobile/secondary devices -> Execute the proof in the `gfx_garden` sandbox on Fedora.
+
 ---
 
-## Week 1: The Silicon Foundation (Bits and Lines)
-**Focus:** Memory footprint accuracy, bitwise logic, and one-dimensional memory buffers.
+## Week 1: The Silicon Foundation
+**The Core Problem:** Hardware registers are rigidly sized. Displays are 1D arrays of memory. You must translate 2D spatial coordinates into 1D memory addresses using exact bit-widths.
 
-- [ ] **Mobile Device (Concept Familiarization):** Review documentation on the `<bit>` header and `<cstdint>`.
-- [ ] **Mobile Device (Concept Familiarization):** Study intuitive explanations of Bresenham's line algorithm.
-- [ ] **Secondary Screen (Theoretical Study):** Review CMU 15-462 (Rasterization), focusing on line drawing mechanics.
-- [ ] **Secondary Screen (Theoretical Study):** Analyze architectural comparisons between CPU ALUs and GPU ALUs.
-- [ ] **Workstation (Practical Implementation):** Implement C++20 bitwise flag operations (Set/Clear/Toggle).
-- [ ] **Workstation (Practical Implementation):** Implement Bresenham's line algorithm utilizing strict `uint32_t` types, outputting to a one-dimensional `std::vector`.
+### 📱 Scavenge Objectives (Research)
+- [ ] **Objective 1.1:** Determine the modern C++ standard method for defining integers that are *exactly* 32 bits and 64 bits wide.
+- [ ] **Objective 1.2:** Investigate the C++20 `<bit>` header. Find the function that counts set bits (1s) to simulate checking active threads in a Warp.
+- [ ] **Objective 1.3:** Research Bresenham's Line Algorithm. Understand the integer-only math required to step from point A to point B without floating-point division.
 
-## Week 2: Data Structures and Memory (Throughput Optimization)
-**Focus:** Data-Oriented Design (SoA), CPU Cache utilization, and 2D shape rasterization.
+### 💻 Sandbox Mission (Execution)
+- [ ] Write a 5-line C++20 test using the exact 32-bit type and the bit-counting function you discovered.
+- [ ] Build a 1D `std::vector` of 32-bit integers to represent a screen buffer.
+- [ ] Write a function that calculates the 1D indices required to draw a line between two 2D coordinates.
 
-- [ ] **Mobile Device (Concept Familiarization):** Research Structure of Arrays (SoA) versus Array of Structures (AoS) memory layouts.
-- [ ] **Mobile Device (Concept Familiarization):** Research CPU Cache Lines and memory latency implications.
-- [ ] **Mobile Device (Concept Familiarization):** Research Barycentric coordinates.
-- [ ] **Secondary Screen (Theoretical Study):** Review CppCon presentations on Data-Oriented Design.
-- [ ] **Secondary Screen (Theoretical Study):** Diagram Barycentric mathematics for point-in-triangle testing.
-- [ ] **Workstation (Practical Implementation):** Refactor existing vertex data structures to conform to SoA principles.
-- [ ] **Workstation (Practical Implementation):** Implement solid triangle rasterization utilizing Barycentric mathematics.
+---
 
-## Week 3: Safe Hardware States and Depth Testing
-**Focus:** Modern C++ safety paradigms (`std::optional`) and 3D depth buffers.
+## Week 2: Cache Efficiency and Data Shapes
+**The Core Problem:** Object-Oriented Programming (OOP) causes CPU cache misses. You must structure data for hardware throughput and understand geometry math.
 
-- [ ] **Mobile Device (Concept Familiarization):** Review `std::optional` and `std::variant` documentation.
-- [ ] **Mobile Device (Concept Familiarization):** Research Z-buffer algorithms and Early-Z culling concepts.
-- [ ] **Secondary Screen (Theoretical Study):** Analyze visual breakdowns of Z-fighting and the depth testing pipeline.
-- [ ] **Secondary Screen (Theoretical Study):** Review modern C++ error handling methodologies (exceptionless design).
-- [ ] **Workstation (Practical Implementation):** Integrate a Z-buffer array into the rasterizer architecture.
-- [ ] **Workstation (Practical Implementation):** Implement depth testing, utilizing `std::optional` to discard occluded pixels efficiently.
+### 📱 Scavenge Objectives (Research)
+- [ ] **Objective 2.1:** Contrast "Array of Structures" (AoS) with "Structure of Arrays" (SoA). Why does SoA maximize CPU cache line utilization?
+- [ ] **Objective 2.2:** Investigate Barycentric coordinates. How does this formula allow a GPU to determine if a pixel is inside a triangle?
 
-## Week 4: Parallel Execution and Architecture
-**Focus:** SIMT (Single Instruction, Multiple Threads) architecture, C++ execution policies, and the complete rendering pipeline.
+### 💻 Sandbox Mission (Execution)
+- [ ] Refactor your vertex coordinate and color structures from classes (AoS) to SoA format.
+- [ ] Implement a rasterizer function that sweeps across your screen buffer, utilizing Barycentric math to fill a solid triangle with color.
 
-- [ ] **Mobile Device (Concept Familiarization):** Research `std::execution::par` implementation in C++17/20.
-- [ ] **Mobile Device (Concept Familiarization):** Research NVIDIA Warp and Wavefront scheduling mechanisms.
-- [ ] **Secondary Screen (Theoretical Study):** Review NVIDIA GTC architecture deep dives.
-- [ ] **Secondary Screen (Theoretical Study):** Diagram the complete Fixed-Function Graphics Pipeline.
-- [ ] **Workstation (Practical Implementation):** Develop a parser for `.obj` 3D model files.
-- [ ] **Workstation (Practical Implementation):** Render a 3D model, applying parallel execution policies for multi-threaded triangle processing.
+---
+
+## Week 3: Exceptionless State and Depth
+**The Core Problem:** Hardware uses status flags, not C++ exceptions. Rendering 3D space requires depth testing without sorting geometry.
+
+### 📱 Scavenge Objectives (Research)
+- [ ] **Objective 3.1:** Explore `std::optional` and `std::variant`. How are they used to build exceptionless, type-safe state machines?
+- [ ] **Objective 3.2:** Research the Z-buffer (Depth Buffer) algorithm. What is Early-Z rejection?
+
+### 💻 Sandbox Mission (Execution)
+- [ ] Allocate a second 1D vector to act as your Depth Buffer.
+- [ ] Update your triangle rasterizer to check the Depth Buffer. Use `std::optional` to elegantly discard occluded pixels without throwing errors or using negative magic numbers.
+
+---
+
+## Week 4: Parallel Execution
+**The Core Problem:** A GPU's SIMT (Single Instruction, Multiple Threads) architecture processes massive amounts of data concurrently. You must simulate this wide execution on your CPU.
+
+### 📱 Scavenge Objectives (Research)
+- [ ] **Objective 4.1:** Research C++17/20 standard execution policies, specifically `std::execution::par`.
+- [ ] **Objective 4.2:** Investigate the standard `.obj` 3D model file format. How are vertices and faces stored?
+
+### 💻 Sandbox Mission (Execution)
+- [ ] Write a minimal parser to load a `.obj` file into your SoA memory structure.
+- [ ] Apply parallel execution policies to your rendering loop to rasterize the 3D model using all available CPU cores simultaneously.
