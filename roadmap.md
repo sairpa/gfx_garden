@@ -1,8 +1,9 @@
 # The Anti-Fragile April Roadmap: GPU Architecture
 
 **Objective:** Build a C++20 Software Rasterizer by April 30th to pivot into Hardware Simulation/GPU Architecture.
-**The Anti-Fragile Protocol:** 1. Assume a maximum of 3 deep-focus days per week.
-2. If the week blows up, execute the "15-Minute Minimum": Read theory on the phone. Zero guilt.
+**The Anti-Fragile Protocol:** 
+1. Assume a maximum of 3 deep-focus days per week.
+2. If the week blows up, execute the "15-Minute Minimum": Read theory on the phone.
 3. **Scavenge** the theory online -> **Sandbox** the proof using `g++ -std=c++20`.
 
 ---
@@ -10,7 +11,7 @@
 ## Week 1: April 1 - April 7 (Bits & The Sandbox)
 **Core Goal:** Master fixed-width memory, bitwise logic, and 1D memory buffers.
 
-- [x] **Core (Laptop):** Compile a C++20 test using `<cstdint>` (`uint32_t`) and `<bit>` (`std::popcount`).
+- [ ] **Core (Laptop):** Compile a C++20 test using `<cstdint>` (`uint32_t`) and `<bit>` (`std::popcount`).
 - [ ] **Flex (Phone):** Research Bresenham's Line Algorithm. Focus on the integer-only coordinate stepping logic.
 - [ ] **Core (Laptop):** Create a 1D `std::vector<uint32_t>` to act as a screen buffer.
 - [ ] **Core (Laptop):** Write a function to calculate the 1D indices required to draw a line between two 2D coordinates (Bresenham's).
