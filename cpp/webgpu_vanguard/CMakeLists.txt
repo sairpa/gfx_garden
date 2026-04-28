@@ -13,5 +13,5 @@ set_target_properties(wgpu PROPERTIES
     CXX_EXTENSIONS OFF
     COMPILE_WARNING_AS_ERROR ON
 )
-
-target_compile_options(wgpu PRIVATE -Wall -Wextra -pedantic)
+# MSVC Related changes
+target_compile_options(wgpu PRIVATE /W4 /WX)
