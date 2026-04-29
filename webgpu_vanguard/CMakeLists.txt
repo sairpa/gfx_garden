@@ -5,7 +5,10 @@ project(
     LANGUAGES CXX C # programming languages used by the project
 )
 
+add_subdirectory(webgpu)
+
 add_executable(wgpu main.cpp)
+
 
 set_target_properties(wgpu PROPERTIES
     CXX_STANDARD 17
@@ -15,3 +18,7 @@ set_target_properties(wgpu PROPERTIES
 )
 # MSVC Related changes
 target_compile_options(wgpu PRIVATE /W4 /WX)
+
+target_link_libraries(wgpu PRIVATE webgpu)
+
+target_copy_webgpu_binaries(wgpu)
