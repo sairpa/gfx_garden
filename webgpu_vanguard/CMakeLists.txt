@@ -17,7 +17,11 @@ set_target_properties(wgpu PROPERTIES
     COMPILE_WARNING_AS_ERROR ON
 )
 # MSVC Related changes
-target_compile_options(wgpu PRIVATE /W4 /WX)
+if (MSVC)
+    target_compile_options(wgpu PRIVATE /W4 /WX) # For windows
+else()
+    target_compile_options(wgpu PRIVATE -Wall -Wextra -pedantic) # For fedora
+endif()
 
 target_link_libraries(wgpu PRIVATE webgpu)
 
