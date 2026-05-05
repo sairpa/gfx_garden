@@ -32,7 +32,7 @@ build a robust data structure to hold the state of the GPU using RAII principles
 
 ### Week 3: Threading and Concurrency
 
-A profiler needs to run continuously in the background, so I have to implement multitasking.
+A profiler needs to run continuously in the background, so need to implement multitasking.
 
 *   **Day 1 to 3**: move my update method into an infinite while loop running on a separate `std::thread`. add a 500ms sleep timer to poll the kernel twice a second.
 *   **Day 4 to 5**: protect my data from race conditions. wrap my `GpuTelemetry` struct in a `std::shared_timed_mutex`.
@@ -40,7 +40,7 @@ A profiler needs to run continuously in the background, so I have to implement m
 
 ### Week 4: The Terminal UI
 
-I am going to make this look like a professional tool similar to htop.
+Make it a professional tool similar to htop.
 
 *   **Day 1 to 2**: link the `ncurses` library to my C++ project and create a `DisplayManager` class.
 *   **Day 3 to 5**: map out the terminal layout. draw static borders and labels for GPU Temp, VRAM Usage, and Core Clock.
