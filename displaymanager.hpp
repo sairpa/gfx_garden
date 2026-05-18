@@ -11,6 +11,7 @@
 #include <ftxui/screen/screen.hpp>
 #include <ftxui/dom/node.hpp>
 #include <ftxui/screen/color.hpp>
+#include<string>
 
 using namespace ftxui;
 
