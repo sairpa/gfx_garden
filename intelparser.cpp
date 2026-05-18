@@ -14,6 +14,7 @@ CIntelParser::CIntelParser(std::string sysFsPath): m_sysFsPath(std::move(sysFsPa
 std::optional<SGpuData> CIntelParser::parseData(){
     // Parse through the Intel stuff
     SGpuData gpuData{0};
+    gpuData.name = "intel inside :D";
     std::string line{""};
     if(std::ifstream curFreqFile(m_sysFsPath + "/gt_cur_freq_mhz"); curFreqFile.is_open()){ // File exists and is open!
         while(getline(curFreqFile, line)){

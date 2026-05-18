@@ -12,6 +12,9 @@
 #include <ftxui/dom/node.hpp>
 #include <ftxui/screen/color.hpp>
 #include<string>
+#include<thread>
+#include<atomic>
+#include<chrono>
 
 using namespace ftxui;
 
@@ -19,5 +22,5 @@ class CDisplayManager{
     public:
         CDisplayManager() = default;
         ~CDisplayManager() = default;
-        void renderGPU(const std::string& gpuName, const SGpuData& gpuData);
+        void renderGPU(const std::vector<std::unique_ptr<IBaseParser>>& gpuParser);
 };

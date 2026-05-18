@@ -8,8 +8,8 @@
 #include"nvidiaparser.hpp"
 
 std::optional<SGpuData> CNvidiaParser::parseData(){
-
     SGpuData gpuData{0};
+    gpuData.name = "nVidia E>";
     std::string line{""};
     if(std::optional<std::string> result = runCommand(nvidiaSmiDefaultQuery); result.has_value()){
         // Parse logic for the string to gpuData conversion

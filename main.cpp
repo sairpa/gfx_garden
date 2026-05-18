@@ -15,6 +15,8 @@ constexpr std::string defaultSysFsPath = "/sys/class/drm/";
 int main(int argc, char** argv){
     std::cout << "Start of GPU Vanguard!\n";
 
+    std::vector<std::unique_ptr<IBaseParser>> gpuParsers;
+
     // Doing a parse of all the cards in the pc...
     auto recurse_dir_iter = std::filesystem::directory_iterator(defaultSysFsPath);
     for (const std::filesystem::directory_entry& entry: recurse_dir_iter){
@@ -32,8 +34,9 @@ int main(int argc, char** argv){
                     
                     CIntelParser intelParser(entry.path().string());
                     if(std::optional<SGpuData> gpuData = intelParser.parseData();gpuData.has_value()){
-                        std::cout << "GPU Data for the intel card at path: " << entry.path() << "\n";
-                        std::cout << "Core clock: " << gpuData->coreClock << "Mhz\n";
+                        // std::cout << "GPU Data for the intel card at path: " << entry.path() << "\n";
+                        // std::cout << "Core clock: " << gpuData->coreClock << "Mhz\n";
+                        gpuParsers.push_back(std::make_unique<CIntelParser>(entry.path().string()));
                     }
                     else{
                         std::cerr << "Something wrong in parsing the gpu data for the intel gpu :/\n";
@@ -46,8 +49,9 @@ int main(int argc, char** argv){
                         // std::cout << "GPU Data for the nVidia card at path: " << entry.path().string() << "\n";
                         // showGpuData(gpuData.value());
                         if (gpuData.has_value()) {
-                            CDisplayManager ui;
-                            ui.renderGPU(device, gpuData.value()); 
+                            // CDisplayManager ui;
+                            // ui.renderGPU(device, gpuData.value()); 
+                            gpuParsers.push_back(std::make_unique<CNvidiaParser>());
                         }
                     }else{
                         std::cerr << "Something wrong in paring the nVidia gpu! \n";
@@ -55,6 +59,15 @@ int main(int argc, char** argv){
                 }
             }
         }
+    }
+
+    // Render the ui now!
+
+    if(gpuParsers.size() != 0){
+        CDisplayManager ui;
+        ui.renderGPU(gpuParsers);
+    }else{
+        std::cerr << "No possible gpu's parsed :/\n";
     }
 
     return 0;
