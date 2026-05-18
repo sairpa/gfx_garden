@@ -5,7 +5,7 @@
    @date May 2026   
 **/
 
-#include"nvidiaparser.h"
+#include"nvidiaparser.hpp"
 
 std::optional<SGpuData> CNvidiaParser::parseData(){
 

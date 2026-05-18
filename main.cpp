@@ -6,9 +6,9 @@
 **/
 
 #include<filesystem>
-// #include"displaymanager.h"
-#include"intelparser.h"
-#include"nvidiaparser.h"
+#include"displaymanager.hpp"
+#include"intelparser.hpp"
+#include"nvidiaparser.hpp"
 
 constexpr std::string defaultSysFsPath = "/sys/class/drm/";
 

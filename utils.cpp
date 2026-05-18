@@ -4,7 +4,7 @@
    @brief Utils class for the whole project!
    @date May 2026   
 **/
-#include"utils.h"
+#include"utils.hpp"
 
 std::optional<std::string> parseCardInfo(const std::string& cardPath){
     // readthrough the uevent file as a vector of string

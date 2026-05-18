@@ -6,7 +6,7 @@
 **/
 
 #pragma once
-#include "baseparser.h"
+#include "baseparser.hpp"
 
 class CIntelParser: public IBaseParser{
     std::string m_sysFsPath; // Default path to the intel gpu

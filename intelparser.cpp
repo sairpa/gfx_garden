@@ -5,7 +5,7 @@
    @date May 2026   
 **/
 
-#include "intelparser.h"
+#include "intelparser.hpp"
 
 CIntelParser::CIntelParser(std::string sysFsPath): m_sysFsPath(std::move(sysFsPath)) {
 
