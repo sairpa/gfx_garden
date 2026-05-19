@@ -18,38 +18,36 @@ std::optional<SGpuData> CNvidiaParser::parseData(){
         std::string res = result.value() + ",";
         for(int i =0; i< res.size(); i++){
             if(res[i] == ','){ 
-                try{
-                    if(res[index] == ' '){
-                        val = std::stoi((res.substr(index+1,i-index)));
-                    }else{
-                        val = std::stoi((res.substr(index,i-index)));
-                    }
-                    
-                    switch(count){
-                        case 0:
-                            gpuData.temperature = val;
-                            break;
-                        case 1:
-                            gpuData.fanSpeed = val;
-                            break;
-                        case 2:
-                            gpuData.coreClock = val;
-                            break;
-                        case 3:
-                            gpuData.memoryClock = val;
-                            break;
-                        case 4:
-                            gpuData.gpuUtilization = val;
-                            break;
-                        case 5:
-                            gpuData.vram = val;
-                    };
-                    index = i+1;
-                    count++;
-                }catch(const std::invalid_argument e){
-                    Logger::error("Got an invalid argument so skipping read and using default 0 val for count: " + std::to_string(count++));
-                    index = i+1;
-                }                
+                std::string token{res.substr(index+1, i-index)};
+                if(token.find("N/A") != std::string::npos){
+                    val = 0;
+                }else if(res[index] == ' '){
+                    val = std::stoi((res.substr(index+1,i-index)));
+                }else{
+                    val = std::stoi((res.substr(index,i-index)));
+                }
+                
+                switch(count){
+                    case 0:
+                        gpuData.temperature = val;
+                        break;
+                    case 1:
+                        gpuData.fanSpeed = val;
+                        break;
+                    case 2:
+                        gpuData.coreClock = val;
+                        break;
+                    case 3:
+                        gpuData.memoryClock = val;
+                        break;
+                    case 4:
+                        gpuData.gpuUtilization = val;
+                        break;
+                    case 5:
+                        gpuData.vram = val;
+                };
+                index = i+1;
+                count++;      
             }
         }
         return gpuData;
