@@ -13,7 +13,7 @@
 
 // GPU Data Skeleton
 struct SGpuData{
-   char* name;
+   const char* name;
    int temperature;    // Celsius
    int fanSpeed;       // rpm / %
    int coreClock;      // Mhz

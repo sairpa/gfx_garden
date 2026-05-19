@@ -13,7 +13,7 @@ std::optional<SGpuData> CNvidiaParser::parseData(){
     std::string line{""};
     if(std::optional<std::string> result = runCommand(nvidiaSmiDefaultQuery); result.has_value()){
         // Parse logic for the string to gpuData conversion
-        std::cout << "Results: " << result.value() << "\n";
+        Logger::info("Results: " + result.value());
         int index{0}, count{0}, val{0};
         std::string res = result.value() + ",";
         for(int i =0; i< res.size(); i++){
@@ -47,7 +47,7 @@ std::optional<SGpuData> CNvidiaParser::parseData(){
                     index = i+1;
                     count++;
                 }catch(const std::invalid_argument e){
-                    std::cerr << "Got an invalid argument so skipping read and using default 0 val for count: " << count++ << "\n";
+                    Logger::error("Got an invalid argument so skipping read and using default 0 val for count: " + std::to_string(count++));
                     index = i+1;
                 }                
             }
@@ -55,7 +55,7 @@ std::optional<SGpuData> CNvidiaParser::parseData(){
         return gpuData;
     }
     else{
-        std::cerr << "Couldn't fetch data for the nvidia card :/\n";
+        Logger::error("Couldn't fetch data for the nvidia card :/");
         return std::nullopt; //stub for now :D
     }
 }

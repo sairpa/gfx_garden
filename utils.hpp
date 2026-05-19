@@ -17,3 +17,15 @@
 std::optional<std::string> parseCardInfo(const std::string& cardpath);
 std::optional<std::string> runCommand(const char* command);
 void showGpuData(SGpuData gpuData);
+
+namespace Logger{
+    enum class Mode{
+        Console,
+        File,
+        Silent
+    };
+
+    void init(Mode mode, const std::string& filePath="gv.log");
+    void info(const std::string& msg);
+    void error(const std::string& msg);
+}

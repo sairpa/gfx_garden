@@ -19,7 +19,7 @@ std::optional<SGpuData> CIntelParser::parseData(){
     if(std::ifstream curFreqFile(m_sysFsPath + "/gt_cur_freq_mhz"); curFreqFile.is_open()){ // File exists and is open!
         while(getline(curFreqFile, line)){
             if(line.empty()){
-                std::cerr << "Doesn't contain current frequncy of the gpu, skipping \n";
+                Logger::error("Doesn't contain current frequncy of the gpu, skipping");
                 break;
             }else{
                 gpuData.coreClock = std::stoi(line);
@@ -27,7 +27,7 @@ std::optional<SGpuData> CIntelParser::parseData(){
         }
         return gpuData;
     }else{
-        std::cerr << "Unable to read the gt_cur_freq_mhz file :/ \n";
+        Logger::error("Unable to read the gt_cur_freq_mhz file :/");
         return std::nullopt;
     }
 }

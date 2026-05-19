@@ -11,10 +11,13 @@
 #include <ftxui/screen/screen.hpp>
 #include <ftxui/dom/node.hpp>
 #include <ftxui/screen/color.hpp>
+#include<ftxui/component/screen_interactive.hpp>
+#include<ftxui/component/component.hpp>
 #include<string>
 #include<thread>
 #include<atomic>
 #include<chrono>
+#include<mutex>
 
 using namespace ftxui;
 

@@ -12,25 +12,28 @@
 
 constexpr std::string defaultSysFsPath = "/sys/class/drm/";
 
+// using namespace Logger;
+
 int main(int argc, char** argv){
-    std::cout << "Start of GPU Vanguard!\n";
+    Logger::init(Logger::Mode::File, "gv.txt");
+    Logger::info("Start of GPU Vanguard!");
 
     std::vector<std::unique_ptr<IBaseParser>> gpuParsers;
 
     // Doing a parse of all the cards in the pc...
     auto recurse_dir_iter = std::filesystem::directory_iterator(defaultSysFsPath);
     for (const std::filesystem::directory_entry& entry: recurse_dir_iter){
-        std::cout<< entry.path() << "\n";
+        Logger::info(entry.path());
         if(entry.path().string().find("card") != std::string::npos){
-            std::cout << "\nFound a possible card!\n";
+            Logger::info("\nFound a possible card!\n");
             std::optional<std::string> cardInfo = parseCardInfo(entry.path().string());
             if(!cardInfo.has_value()){
-                std::cerr << "Possible peripherals like the DP or HDMI ports are being detected as cards, skipping them...\n";
+                Logger::error("Possible peripherals like the DP or HDMI ports are being detected as cards, skipping them...");
                 continue;
             }else{
                 
                 if(std::string device = cardInfo.value();device == "intel_gpu" || device == "i915" || device == "xe"){
-                    std::cout << "Found an Intel GPU! \n";
+                    Logger::info("Found an Intel GPU!");
                     
                     CIntelParser intelParser(entry.path().string());
                     if(std::optional<SGpuData> gpuData = intelParser.parseData();gpuData.has_value()){
@@ -39,11 +42,11 @@ int main(int argc, char** argv){
                         gpuParsers.push_back(std::make_unique<CIntelParser>(entry.path().string()));
                     }
                     else{
-                        std::cerr << "Something wrong in parsing the gpu data for the intel gpu :/\n";
+                        Logger::error("Something wrong in parsing the gpu data for the intel gpu :/");
                     }
                 }// else for amd and nvidia
                 else if(device == "nvidia" || device == "nouveau" || device == "nouveau_modeset"){
-                    std::cout << "Found an nVidia GPU!\n";
+                    Logger::info("Found an nVidia GPU!");
                     CNvidiaParser nvidiaParser{CNvidiaParser()};
                     if(std::optional<SGpuData> gpuData = nvidiaParser.parseData(); gpuData.has_value()){
                         // std::cout << "GPU Data for the nVidia card at path: " << entry.path().string() << "\n";
@@ -54,7 +57,7 @@ int main(int argc, char** argv){
                             gpuParsers.push_back(std::make_unique<CNvidiaParser>());
                         }
                     }else{
-                        std::cerr << "Something wrong in paring the nVidia gpu! \n";
+                        Logger::error("Something wrong in paring the nVidia gpu!");
                     }
                 }
             }
@@ -67,7 +70,7 @@ int main(int argc, char** argv){
         CDisplayManager ui;
         ui.renderGPU(gpuParsers);
     }else{
-        std::cerr << "No possible gpu's parsed :/\n";
+        Logger::error("No possible gpu's parsed :/");
     }
 
     return 0;
