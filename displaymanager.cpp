@@ -10,7 +10,7 @@
 void CDisplayManager::renderGPU(const std::vector<std::unique_ptr<IBaseParser>>& gpuParsers){
     std::vector<SGpuData> gpuList(gpuParsers.size());
     std::mutex dataMutex;
-    auto screen = ScreenInteractive::TerminalOutput(); // UI Handler loop
+    auto screen = ScreenInteractive::Fullscreen(); // UI Handler loop
     auto renderer = Renderer([&] {
         Elements gpuPanels;
         std::lock_guard<std::mutex> lock(dataMutex);
