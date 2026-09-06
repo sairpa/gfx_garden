@@ -1,0 +1,36 @@
+### 1. Matrices are just "Coordinate Systems" (Basis Vectors)
+
+Do not look at a matrix as a random grid of 16 numbers. Look at it as four `Vector4` columns.
+
+* **The Concept:** The columns of a matrix represent where your fundamental X, Y, and Z axes land after a transformation.
+* **The Application:** If you want to rotate an object 90 degrees, you don't calculate every point. You just figure out where the X, Y, and Z axes point after that rotation, drop those three new directions into the columns of a matrix, and multiply your object by it.
+
+### 2. Homogeneous Coordinates (The Magic of 'W')
+
+You just built `Vector4`. Now you need to understand exactly why graphics pipelines require it.
+
+* **The Concept:** A 3x3 matrix can only stretch (scale) or spin (rotate) an object. It cannot *move* (translate) an object because the origin $(0,0,0)$ must always remain fixed in linear algebra.
+* **The Application:** By adding the 4th dimension ($w=1$), you essentially elevate your 3D world onto a flat 4D plane. This allows a 4x4 matrix to "shear" that 4D space, which mathematically results in a pure 3D translation when projected back down.
+
+### 3. The Order of Operations (Non-Commutative Math)
+
+When you start combining matrices, the order in which you multiply them is absolute law.
+
+* **The Concept:** Matrix multiplication is not commutative. $A \times B$ does not equal $B \times A$.
+* **The Application:** If you apply a Translation Matrix and then a Rotation Matrix, the object moves to a spot and spins in place. If you apply the Rotation Matrix first and then the Translation Matrix, the object spins first, meaning its forward trajectory changes, and it translates into a completely different part of the universe.
+
+### 4. The Dot Product (The Lighting Engine)
+
+You coded the math for this today. Now visualize its purpose.
+
+* **The Concept:** The Dot Product measures how much two vectors point in the same direction.
+* **The Application:** This is how shaders calculate light. If you have a vector pointing straight out of your 3D model (a normal) and a vector pointing toward the sun, the Dot Product tells you exactly how bright that pixel should be. If they point the exact same way, it is 100% lit. If they are perpendicular, it is entirely in shadow.
+
+### 5. The Cross Product (The Surface Normal)
+
+You know it only works in 3D and 7D, but here is what it actually builds in your engine.
+
+* **The Concept:** You feed it two vectors, and it spits out a third vector that is perfectly perpendicular (orthogonal) to both.
+* **The Application:** A 3D model is made of triangles. A triangle has two edges (two vectors). If you take the Cross Product of those two edges, you instantly get a vector pointing straight out of the flat face of the triangle. This is the "Surface Normal," and without it, 3D lighting algorithms cannot function.
+
+Take your time visualizing these. Once the geometric intuition clicks, drop the 4x4 column-major matrix code into `Matrix.hpp` and watch the math perfectly translate a vector in your terminal.
